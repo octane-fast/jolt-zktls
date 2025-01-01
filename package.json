@@ -1,0 +1,18 @@
+{
+    "name": "jolt-zktls",
+    "version": "0.1.0",
+    "private": true,
+    "description": "TLS 1.3 decryption proof using Jolt zkVM",
+    "scripts": {
+        "record": "npx tsx test/generate-test-cases.ts",
+        "test:decrypt": "npx tsx test/test-decrypt-cases.ts",
+        "prove-url": "npx tsx cli/prove-url.ts",
+        "validate": "npx tsx test/validate-session.ts"
+    },
+    "dependencies": {
+        "@reclaimprotocol/tls": "^0.1.3"
+    },
+    "devDependencies": {
+        "tsx": "^4.19.0"
+    }
+}

@@ -1,0 +1,42 @@
+[package]
+name = "prove"
+version = "0.1.0"
+edition = "2021"
+build = "build.rs"
+
+[lib]
+name = "prove"
+crate-type = ["lib", "staticlib", "cdylib"]
+
+[workspace]
+resolver = "2"
+
+[profile.release]
+debug = 1
+codegen-units = 1
+lto = "fat"
+
+[dependencies]
+jolt-sdk = { git = "https://github.com/octane-fast/jolt", features = ["host", "zk"] }
+guest = { path = "./guest" }
+tracing = "0.1"
+tracing-subscriber = "0.3"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+hex = "0.4"
+rayon = "1"
+
+[patch."https://github.com/octane-fast/jolt"]
+common = { path = "./common-patched" }
+
+[patch."https://github.com/a16z/jolt"]
+jolt-sdk = { git = "https://github.com/octane-fast/jolt" }
+common = { path = "./common-patched" }
+
+[patch.crates-io]
+ark-ff = { git = "https://github.com/a16z/arkworks-algebra", branch = "dev/twist-shout" }
+ark-ec = { git = "https://github.com/a16z/arkworks-algebra", branch = "dev/twist-shout" }
+jolt-optimizations = { git = "https://github.com/a16z/arkworks-algebra", branch = "dev/twist-shout" }
+ark-serialize = { git = "https://github.com/a16z/arkworks-algebra", branch = "dev/twist-shout" }
+ark-bn254 = { git = "https://github.com/a16z/arkworks-algebra", branch = "dev/twist-shout" }
+allocative = { git = "https://github.com/facebookexperimental/allocative", rev = "85b773d85d526d068ce94724ff7a7b81203fc95e" }

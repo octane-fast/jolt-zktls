@@ -1,0 +1,11 @@
+*.o
+.DS_Store
+node_modules/
+.env
+
+**/tls-capture
+**/target
+**/dist
+
+# Preprocessing data (generated, ~4MB)
+preprocess/

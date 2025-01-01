@@ -1,0 +1,12 @@
+[package]
+name = "guest"
+version = "0.1.0"
+edition = "2021"
+
+[features]
+guest = []
+
+[dependencies]
+jolt = { package = "jolt-sdk", git = "https://github.com/a16z/jolt", default-features = false }
+tls-decrypt-rs = { path = "../../decrypt/tls-decrypt-rs", default-features = false, features = ["guest"] }
+serde = { version = "1", default-features = false, features = ["derive", "alloc"] }
